@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Ti-i-janaSF/TestRepo/issues"
   },
-  "homepage": "https://github.com/Ti-i-janaSF/TestRepo#readme"
+  "homepage": "https://github.com/Ti-i-janaSF/TestRepo#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
