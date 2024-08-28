@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        KUBECONFIG = '/home/jenkins/.kube/config' // Path to the kubeconfig file on Jenkins server
+	KUBECONFIG = '/var/jenkins_home/.minikube-ca/config'  // Path to kubeconfig if you have copied it
+        CA_CERT_PATH = '/var/jenkins_home/.minikube-ca.crt'        
     }
 
     stages {
@@ -12,18 +13,11 @@ pipeline {
             }
         }
 
-        stage('Set Up Minikube') {
-            steps {
-                script {
-                    // Start Minikube (make sure Minikube is already running or adjust this as needed)
-                    sh 'minikube start'
-                }
-            }
-        }
 
         stage('Deploy to Minikube') {
             steps {
                 script {
+		    sh 'kubectl config set-cluster minikube --certificate-authority=${CA_CERT_PATH}'
                     // Apply the Kubernetes YAML files
                     sh 'kubectl apply -f deployment.yaml'
                     sh 'kubectl apply -f service.yaml'
