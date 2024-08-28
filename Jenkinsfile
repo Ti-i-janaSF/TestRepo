@@ -19,8 +19,8 @@ pipeline {
                 script {
 		    sh 'kubectl config set-cluster minikube --certificate-authority=${CA_CERT_PATH}'
                     // Apply the Kubernetes YAML files
-                    sh 'kubectl apply -f deployment.yaml'
-                    sh 'kubectl apply -f service.yaml'
+                    sh 'kubectl apply -f deployment.yaml --validate=false'
+                    sh 'kubectl apply -f service.yaml --validate=false'
                 }
             }
         }
