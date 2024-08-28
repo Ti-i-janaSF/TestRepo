@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myApp-deployment
+  name: myapp-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: myApp
+      app: myapp
   template:
     metadata:
       labels:
-        app: myApp
+        app: myapp
     spec:
       containers:
-      - name: myApp
+      - name: myapp
         image: tijana993/my-node-app:v2.0
         ports:
         - containerPort: 3000
