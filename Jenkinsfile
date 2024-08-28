@@ -7,6 +7,14 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Ti-i-janaSF/TestRepo']]])
             }
         }
+	stage('Start minikube'){
+	    steps {
+		sh 'minikube start'
+	    }
+
+	}
+	
+	
 
 
         stage('Deploy to Minikube') {
